@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="DouGinWai" type="application/atom+xml" />
 
@@ -81,13 +83,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="DouGinWai">
-<meta property="og:url" content="http://douginwai.github.io/index.html">
+<meta name="description" content="准备工作 一个认证小程序     一个商户号  需要以上2个账号，开发小程序支付需要的这两个账号   一种流程是先申请小程序认证，通过认证后在小程序后台申请新的商户号，或者绑定现有商户号。 另外一种，先申请一个公众平台并且是服务号，必须服务号因为微信支付只支援服务号。服务号通过之后，左侧菜单栏有一个小程序管理模块，可以将服务号关联小程序，或者快速认证小程序。这里快速注册并认证小程序，可能就是使用服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用easywechat开发小程序支付">
+<meta property="og:url" content="http://douginwai.github.io/2019/01/16/easywechat-for-wechatpay/index.html">
 <meta property="og:site_name" content="DouGinWai">
+<meta property="og:description" content="准备工作 一个认证小程序     一个商户号  需要以上2个账号，开发小程序支付需要的这两个账号   一种流程是先申请小程序认证，通过认证后在小程序后台申请新的商户号，或者绑定现有商户号。 另外一种，先申请一个公众平台并且是服务号，必须服务号因为微信支付只支援服务号。服务号通过之后，左侧菜单栏有一个小程序管理模块，可以将服务号关联小程序，或者快速认证小程序。这里快速注册并认证小程序，可能就是使用服">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://douginwai.github.io/2019/01/16/easywechat-for-wechatpay/Image.png">
+<meta property="og:updated_time" content="2019-01-16T09:26:53.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DouGinWai">
+<meta name="twitter:title" content="使用easywechat开发小程序支付">
+<meta name="twitter:description" content="准备工作 一个认证小程序     一个商户号  需要以上2个账号，开发小程序支付需要的这两个账号   一种流程是先申请小程序认证，通过认证后在小程序后台申请新的商户号，或者绑定现有商户号。 另外一种，先申请一个公众平台并且是服务号，必须服务号因为微信支付只支援服务号。服务号通过之后，左侧菜单栏有一个小程序管理模块，可以将服务号关联小程序，或者快速认证小程序。这里快速注册并认证小程序，可能就是使用服">
+<meta name="twitter:image" content="http://douginwai.github.io/2019/01/16/easywechat-for-wechatpay/Image.png">
 
 
 
@@ -117,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://douginwai.github.io/"/>
+  <link rel="canonical" href="http://douginwai.github.io/2019/01/16/easywechat-for-wechatpay/"/>
 
 
 
 
 
-  <title>DouGinWai</title>
+  <title>使用easywechat开发小程序支付 | DouGinWai</title>
   
 
 
@@ -142,8 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,9 +223,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -248,9 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/16/easywechat-for-wechatpay/" itemprop="url">使用easywechat开发小程序支付</a></h1>
+          <h1 class="post-title" itemprop="name headline">使用easywechat开发小程序支付</h1>
         
 
         <div class="post-meta">
@@ -276,6 +281,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/16/easywechat-for-wechatpay/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/16/easywechat-for-wechatpay/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -300,9 +315,7 @@
       
 
       
-        
-          
-            <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li>一个认证小程序    </li>
 <li>一个商户号</li>
 </ol>
@@ -320,8 +333,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public function pay()</span><br><span class="line">&#123;</span><br><span class="line">    $order_num = I(&apos;post.order_num&apos;, &apos;&apos;);</span><br><span class="line">    //根据订单号获取订单详情 $orderDetail</span><br><span class="line">    </span><br><span class="line">    $options = $this-&gt;option();//获取配置信息</span><br><span class="line">    $app = new \EasyWeChat\Foundation\Application($options);//使用配置信息创建app实例</span><br><span class="line">    $payment = $app-&gt;payment;</span><br><span class="line">    //支付体，填写支付信息</span><br><span class="line">    $attributes = [</span><br><span class="line">        &apos;openid&apos; =&gt; &apos;openid&apos;, //支付用户的openid</span><br><span class="line">        &apos;trade_type&apos; =&gt; &apos;JSAPI&apos;, //支付类型</span><br><span class="line">        &apos;body&apos; =&gt; &apos;iPhone X&apos;,</span><br><span class="line">        &apos;detail&apos; =&gt; &apos;iPhone X 金色 256G&apos;,</span><br><span class="line">        &apos;out_trade_no&apos; =&gt; $order_num,//支付的订单号，此号可与本地数据库订单号一致</span><br><span class="line">        &apos;total_fee&apos; =&gt; 100  //支付金额，单位分，1元即100</span><br><span class="line">    ];</span><br><span class="line">    $order = new Order($attributes); //根据填写信息创建订单</span><br><span class="line">    $result = $payment-&gt;prepare($order); //预支付，检验支付信息等是否合法</span><br><span class="line">    if ($result-&gt;return_code == &apos;SUCCESS&apos; &amp;&amp; $result-&gt;result_code == &apos;SUCCESS&apos;) &#123;</span><br><span class="line">        $prepayId = $result-&gt;prepay_id; //校验成功获得预支付id</span><br><span class="line">        $config = $payment-&gt;configForPayment($prepayId, false); //返回预支付结果，供前端调用支付</span><br><span class="line">        //支付成功后返回$config给前端</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>回调代码，回调接口是用户支付之后，由微信服务器通知支付结果的接口，这里返回的是xml格式的通知，开发者应该处理好通知结果，并及时反馈给微信服务器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public function notify()</span><br><span class="line">&#123;</span><br><span class="line">    $options = $this-&gt;option(); //获取配置信息</span><br><span class="line">    $app = new \EasyWeChat\Foundation\Application($options);</span><br><span class="line"></span><br><span class="line">    $response = $app-&gt;payment-&gt;handleNotify(function ($notify, $successful) &#123;</span><br><span class="line">        //这里由EasyWechat处理好xml格式通知后，将信息封装在$notify上</span><br><span class="line">        $order_num = $notify-&gt;out_trade_no; //获得支付时我们设定的交易订单号</span><br><span class="line"></span><br><span class="line">        // 下面是使用通知里的 &quot;微信支付订单号&quot; 或者 &quot;商户订单号&quot; 去自己的数据库找到订单 $orderDetail</span><br><span class="line"></span><br><span class="line">        if (!$orderDetail) &#123; // 如果订单不存在 或者 订单已经支付过了</span><br><span class="line">            return &quot;订单号：&#123;$order_num&#125; 订单不存在&quot;; // 告诉微信，我已经处理完了，订单没找到，别再通知我了</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果订单存在</span><br><span class="line">        // 检查订单是否已经更新过支付状态</span><br><span class="line">        if ($orderDetail[&apos;payment_status&apos;] == 1) &#123; // 假设订单字段“支付时间”不为空代表已经支付</span><br><span class="line">            return true; // 已经支付成功了就不再更新了</span><br><span class="line">        &#125;</span><br><span class="line">        // 用户是否支付成功</span><br><span class="line">        if ($successful) &#123;</span><br><span class="line">            // 此处 不是已经支付状态则修改为已经支付状态  更新支付时间为当前时间</span><br><span class="line">          </span><br><span class="line">        &#125; else &#123; // 用户支付失败</span><br><span class="line">        &#125;</span><br><span class="line">        return true; // 返回处理完成</span><br><span class="line">    &#125;);</span><br><span class="line">    $response-&gt;send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -338,132 +349,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://douginwai.github.io/2018/03/23/first-post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DouGinWai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DouGinWai">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/23/first-post/" itemprop="url">first post</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T11:28:32+08:00">
-                2018-03-23
-              </time>
+              <a href="/2018/03/23/first-post/" rel="next" title="first post">
+                <i class="fa fa-chevron-left"></i> first post
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>first log</p>
-<h1 id="welcome"><a href="#welcome" class="headerlink" title="welcome"></a>welcome</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -473,10 +380,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -484,6 +392,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -504,8 +423,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,6 +491,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发代码"><span class="nav-number">2.</span> <span class="nav-text">开发代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -696,6 +640,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -742,6 +690,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'douginwai',
+            repo: 'gitment-comments',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '60dcee2e2e02fd82c3fd0181baeb355754c4fad1',
+            
+                client_id: '35e9e147c85188c5983d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
