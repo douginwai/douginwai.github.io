@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://douginwai.github.io/"/>
-  <updated>2019-01-16T09:26:53.584Z</updated>
+  <updated>2019-07-31T01:38:07.635Z</updated>
   <id>http://douginwai.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单实用Laravel队列</title>
+    <link href="http://douginwai.github.io/2019/07/31/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8Laravel%E9%98%9F%E5%88%97/"/>
+    <id>http://douginwai.github.io/2019/07/31/简单实用Laravel队列/</id>
+    <published>2019-07-31T01:24:29.000Z</published>
+    <updated>2019-07-31T01:38:07.635Z</updated>
+    
+    <content type="html"><![CDATA[<p>##需求<br>有一个需求需要将表格中的作品从oss服务器拉取下来，因为这个任务耗时较长，就想尝试一下laravel的异步队列的功能，用户请求拉取的时候，立即返回请求成功，拉取任务在服务器异步进行。</p><p>##配置环境<br>.env文件中设置QUEUE_CONNECTION=database，设置队列驱动，这里使用的框架是laravel 5.8，不同版本配置不同，本文使用database。</p><p>下面迁移jobs数据表，待执行的任务会记录在该表中。</p><pre><code>php artisan queue:tablephp artisan migrate</code></pre><p>##创建任务<br>    php artisan make:job DownloadPic<br>执行以上命令，会在app/jobs目录下生成一个队列的任务类，生成的类实现了 Illuminate\Contracts\Queue\ShouldQueue 接口，这意味着这个任务将会被推送到队列中，而不是同步执行。</p><pre><code>&lt;?phpnamespace App\Jobs;use Illuminate\Bus\Queueable;use Illuminate\Queue\SerializesModels;use Illuminate\Queue\InteractsWithQueue;use Illuminate\Contracts\Queue\ShouldQueue;use Illuminate\Foundation\Bus\Dispatchable;class DownloadPic implements ShouldQueue{    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;    private $list =[];        /**     * Create a new job instance.     *     * @return void     */    public function __construct($list)    {        //        $this-&gt;list = $list;    }    /**     * Execute the job.     *     * @return void     */    public function handle()    {        //        foreach($this-&gt;list as $item){            //执行耗时的任务        }    }}</code></pre><p>此任务类被调用默认执行handle()方法</p><p>##分发任务<br>新建一个Controller，将调用方法分配给一个路由，执行任务类的dispatch方法分发任务。</p><pre><code>public function download(){    $list = StampDesign::get();    DownloadPic::dispatch($list);;    echo &apos;OK&apos;;}</code></pre><p>##运行队列处理器<br>    php artisan queue:work<br>执行该命令，开始持续监听队列</p><p>##运行</p><p>访问download的路由，将下载任务推送到队列，队列处理器监听到队列的更新，将记录写在jobs表，执行队列任务，执行完成，删除jobs表中的已完成记录。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##需求&lt;br&gt;有一个需求需要将表格中的作品从oss服务器拉取下来，因为这个任务耗时较长，就想尝试一下laravel的异步队列的功能，用户请求拉取的时候，立即返回请求成功，拉取任务在服务器异步进行。&lt;/p&gt;
+&lt;p&gt;##配置环境&lt;br&gt;.env文件中设置QUEUE_CONNE
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用easywechat开发小程序支付</title>

@@ -231,6 +231,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://douginwai.github.io/2019/07/31/简单实用Laravel队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DouGinWai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DouGinWai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/31/简单实用Laravel队列/" itemprop="url">简单实用Laravel队列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T09:24:29+08:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##需求<br>有一个需求需要将表格中的作品从oss服务器拉取下来，因为这个任务耗时较长，就想尝试一下laravel的异步队列的功能，用户请求拉取的时候，立即返回请求成功，拉取任务在服务器异步进行。</p>
+<p>##配置环境<br>.env文件中设置QUEUE_CONNECTION=database，设置队列驱动，这里使用的框架是laravel 5.8，不同版本配置不同，本文使用database。</p>
+<p>下面迁移jobs数据表，待执行的任务会记录在该表中。</p>
+<pre><code>php artisan queue:table
+
+php artisan migrate
+</code></pre><p>##创建任务<br>    php artisan make:job DownloadPic<br>执行以上命令，会在app/jobs目录下生成一个队列的任务类，生成的类实现了 Illuminate\Contracts\Queue\ShouldQueue 接口，这意味着这个任务将会被推送到队列中，而不是同步执行。</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+
+
+class DownloadPic implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private $list =[];    
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($list)
+    {
+        //
+        $this-&gt;list = $list;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        //
+        foreach($this-&gt;list as $item){
+            //执行耗时的任务
+        }
+    }
+}
+</code></pre><p>此任务类被调用默认执行handle()方法</p>
+<p>##分发任务<br>新建一个Controller，将调用方法分配给一个路由，执行任务类的dispatch方法分发任务。</p>
+<pre><code>public function download()
+{
+    $list = StampDesign::get();
+    DownloadPic::dispatch($list);;
+    echo &apos;OK&apos;;
+}
+</code></pre><p>##运行队列处理器<br>    php artisan queue:work<br>执行该命令，开始持续监听队列</p>
+<p>##运行</p>
+<p>访问download的路由，将下载任务推送到队列，队列处理器监听到队列的更新，将记录写在jobs表，执行队列任务，执行完成，删除jobs表中的已完成记录。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://douginwai.github.io/2019/01/16/easywechat-for-wechatpay/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -518,7 +695,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
